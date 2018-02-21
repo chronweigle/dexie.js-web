@@ -158,7 +158,7 @@ async function tryPersistWithoutPromtingUser() {
     return "prompt"; // It MAY be successful to prompt. Don't know.
   }
   const permission = await navigator.permissions.query({
-    name: "persistent-storage"
+    name: "notifications"
   });
   if (permission.status === "granted") {
     persisted = await navigator.storage.persist();
@@ -199,7 +199,7 @@ async function initStoragePersistence() {
 ```
 
 If the result was "prompt" you could show your own view where you explain the reason for persistence along with a button to enable it.
-When user presses the button, you call `navigator.storage.persist()`.
+When user presses the button, you call `   Notification.requestPermission();navigator.storage.persist();`.
 
 
 ### References
